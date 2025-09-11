@@ -25,7 +25,7 @@ public class Jugador {
 	private Float puntosMedia;
 	
 	@Column(name="puntos_jornada")
-	private Float puntosJornada;
+	private Integer puntosJornada;
 	
 	@Column(name="path_foto")
 	private String pathFoto;
@@ -49,6 +49,9 @@ public class Jugador {
 	
 	@Column(name="prob_gol")
 	private Float probGol;
+	
+	@Column(name="goles")
+	private Integer goles;
 
 	public Integer getIdJugador() {
 		return idJugador;
@@ -138,12 +141,20 @@ public class Jugador {
 		this.probGol = probGol;
 	}
 
-	public Float getPuntosJornada() {
+	public Integer getPuntosJornada() {
 		return puntosJornada;
 	}
 
-	public void setPuntosJornada(Float puntosJornada) {
+	public void setPuntosJornada(Integer puntosJornada) {
 		this.puntosJornada = puntosJornada;
+	}
+
+	public Integer getGoles() {
+		return goles;
+	}
+
+	public void setGoles(Integer goles) {
+		this.goles = goles;
 	}
 	
 }
