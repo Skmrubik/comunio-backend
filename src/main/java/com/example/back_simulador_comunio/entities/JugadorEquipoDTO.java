@@ -21,7 +21,7 @@ public class JugadorEquipoDTO {
 	
 	private Integer posicion;
 	
-	private BigDecimal puntos_jornada;
+	private Integer puntos_jornada;
 	
 	private String path_foto;
 
@@ -29,7 +29,7 @@ public class JugadorEquipoDTO {
 	}
 
 	public JugadorEquipoDTO(Integer id_jugador, String nombre, Integer puntos_totales, BigDecimal puntos_media,
-			Integer posicion, BigDecimal puntos_jornada, String path_foto) {
+			Integer posicion, Integer puntos_jornada, String path_foto) {
 		this.id_jugador = id_jugador;
 		this.nombre = nombre;
 		this.puntos_totales = puntos_totales;
@@ -79,11 +79,11 @@ public class JugadorEquipoDTO {
 		this.posicion = posicion;
 	}
 
-	public BigDecimal getPuntos_jornada() {
+	public Integer getPuntos_jornada() {
 		return puntos_jornada;
 	}
 
-	public void setPuntos_jornada(BigDecimal puntos_jornada) {
+	public void setPuntos_jornada(Integer puntos_jornada) {
 		this.puntos_jornada = puntos_jornada;
 	}
 
