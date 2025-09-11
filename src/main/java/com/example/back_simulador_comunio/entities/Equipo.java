@@ -26,7 +26,13 @@ public class Equipo {
 	
 	@Column(name="nivel")
 	private Float nivel;
+	
+	@Column(name="goles_casa")
+	private Integer golesCasa;
 
+	@Column(name="goles_fuera")
+	private Integer golesFuera;
+	
 	public Integer getIdEquipo() {
 		return idEquipo;
 	}
@@ -59,4 +65,19 @@ public class Equipo {
 		this.nivel = nivel;
 	}
 
+	public Integer getGolesCasa() {
+		return golesCasa;
+	}
+
+	public void setGolesCasa(Integer golesCasa) {
+		this.golesCasa = golesCasa;
+	}
+
+	public Integer getGolesFuera() {
+		return golesFuera;
+	}
+
+	public void setGolesFuera(Integer golesFuera) {
+		this.golesFuera = golesFuera;
+	}
 }
