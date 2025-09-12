@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -72,6 +73,21 @@ public class JugadorService {
 			Integer id = Integer.parseInt(idParticipante);
 			List<JugadorEquipoDTO> jugador = jugadorRepository.listJugadoresSuplentes(id);
 			return new ResponseEntity<>(jugador, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/actualizarJugadores")
+	private ResponseEntity<Integer> actualizarJugadores(){
+		try {
+			int a = jugadorRepository.sumarJornadaATotal();
+			int e = jugadorRepository.reiniciarGolesJornada();
+			int d = jugadorRepository.reiniciarPuntosJornada();
+			int b = jugadorRepository.calcularMedia();
+			int c = jugadorRepository.aumentarJornada();
+			return new ResponseEntity<>(1, HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(e);
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

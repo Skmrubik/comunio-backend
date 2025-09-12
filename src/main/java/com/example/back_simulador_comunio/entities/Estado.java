@@ -17,8 +17,8 @@ public class Estado {
 	@Column(name="num_jornada")
 	private Integer numJornada;
 	
-	@Column(name="fin_jornada")
-	private Boolean finJornada;
+	@Column(name="partidos_jugados")
+	private Integer partidosJugados;
 
 	public Integer getIdEstado() {
 		return idEstado;
@@ -36,13 +36,11 @@ public class Estado {
 		this.numJornada = numJornada;
 	}
 
-	public Boolean getFinJornada() {
-		return finJornada;
+	public Integer getPartidosJugados() {
+		return partidosJugados;
 	}
 
-	public void setFinJornada(Boolean finJornada) {
-		this.finJornada = finJornada;
+	public void setPartidosJugados(Integer partidosJugados) {
+		this.partidosJugados = partidosJugados;
 	}
-	
-	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.back_simulador_comunio.entities.Jugador;
 import com.example.back_simulador_comunio.entities.MensajeJugadorDTO;
 import com.example.back_simulador_comunio.repositories.JugadorRepository;
+import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,6 +19,9 @@ public class KafkaConsumerService {
 
 	@Autowired
 	JugadorRepository jugadorRepository;
+	
+	@Autowired
+	ParticipanteRepository participanteRepository;
 	
 	private final WebSocketHandler webSocketHandler;
 	
@@ -39,13 +43,18 @@ public class KafkaConsumerService {
         jugador.setGoles(obj.getGoles());
         jugador.setPuntosJornada(obj.getPuntosJornada());
         jugadorRepository.save(jugador);
+        if (jugador.getIdParticipante() != null && jugador.getIdParticipante().getIdParticipante() != null && jugador.getTitular()) {
+        	participanteRepository.aumentarPuntosJornadaParticipante(obj.getPuntosJornada(), jugador.getIdParticipante().getIdParticipante());
+        }
         contador++;
         if (contador == 22) {
-        	
         	try {
-        		Thread.sleep(2000);
+        		Thread.sleep(1000);
 				webSocketHandler.sendMessage("UPDATE");
-			} catch (IOException | InterruptedException e) {
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

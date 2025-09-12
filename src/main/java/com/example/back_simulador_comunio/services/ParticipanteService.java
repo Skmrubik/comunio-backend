@@ -58,8 +58,16 @@ public class ParticipanteService {
 		}
 	}
 	
-	@KafkaListener(topics = "my_topic", groupId = "group_id")
-    public void consume(String message) {
-        System.out.println("Message received: " + message);
-    }
+	@GetMapping("/reiniciarJornadaParticipantes")
+	private ResponseEntity<Integer> reiniciarJornadaParticipantes(){
+		try {
+			int a = participanteRepository.aumentarPuntosTotalesParticipante();
+			int b = participanteRepository.reiniciarPuntosJornada();
+			return new ResponseEntity<>(1, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 }
