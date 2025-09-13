@@ -15,6 +15,9 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Inte
 	@Query(value="select * from participante order by puntos_jornada_actual desc", nativeQuery=true)
 	public List<Participante> getClasificacion();
 	
+	@Query(value="select * from participante order by puntos_totales desc", nativeQuery=true)
+	public List<Participante> getClasificacionTotal();
+	
 	public Participante findByNickname(String nickname);
 	
 	@Modifying

@@ -40,6 +40,17 @@ public class ParticipanteService {
 		}
 	}
 	
+	@GetMapping("/getClasificacionTotal")
+	private ResponseEntity<List<Participante>> getClasificacionOrdenadaTotal(){
+		try {
+			List<Participante> participante = participanteRepository.getClasificacionTotal();
+			return new ResponseEntity<>(participante, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@GetMapping("/getAccess")
 	private ResponseEntity<Participante> getAccess(@RequestParam String username,
 			@RequestParam String password){
