@@ -49,7 +49,7 @@ public class KafkaConsumerService {
         contador++;
         if (contador == 22) {
         	try {
-        		Thread.sleep(1000);
+        		Thread.sleep(2000);
 				webSocketHandler.sendMessage("UPDATE");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
