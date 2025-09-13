@@ -74,6 +74,7 @@ public class ParticipanteService {
 		try {
 			int a = participanteRepository.aumentarPuntosTotalesParticipante();
 			int b = participanteRepository.reiniciarPuntosJornada();
+			int c = participanteRepository.reiniciarNumeroJugadores();
 			return new ResponseEntity<>(1, HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(e);

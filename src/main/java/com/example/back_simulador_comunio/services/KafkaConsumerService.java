@@ -45,6 +45,9 @@ public class KafkaConsumerService {
         jugadorRepository.save(jugador);
         if (jugador.getIdParticipante() != null && jugador.getIdParticipante().getIdParticipante() != null && jugador.getTitular()) {
         	participanteRepository.aumentarPuntosJornadaParticipante(obj.getPuntosJornada(), jugador.getIdParticipante().getIdParticipante());
+        	if(jugador.getTitular()) {
+        		participanteRepository.aumentarJugadoresJugadosParticipante(jugador.getIdParticipante().getIdParticipante());
+        	}
         }
         contador++;
         if (contador == 22) {

@@ -28,6 +28,12 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Inte
 	
 	@Modifying
     @Transactional
+    @Query(value="update participante set jugadores_jugados = jugadores_jugados + 1 \r\n"
+    		+ "where id_participante = ?1", nativeQuery=true)
+    int aumentarJugadoresJugadosParticipante(Integer idParticipante);
+	
+	@Modifying
+    @Transactional
     @Query(value="update participante set puntos_totales = puntos_totales + puntos_jornada_actual", nativeQuery=true)
     int aumentarPuntosTotalesParticipante();
 	
@@ -35,4 +41,9 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Inte
     @Transactional
     @Query(value="update participante set puntos_jornada_actual = 0", nativeQuery=true)
     int reiniciarPuntosJornada();
+	
+	@Modifying
+    @Transactional
+    @Query(value="update participante set jugadores_jugados = 0", nativeQuery=true)
+    int reiniciarNumeroJugadores();
 }

@@ -27,6 +27,9 @@ public class Participante {
 	
 	@Column(name = "puntos_jornada_actual")
 	private Integer puntosJornadaActual;
+	
+	@Column(name = "jugadores_jugados")
+	private Integer jugadoresJugados;
 
 	public Integer getIdParticipante() {
 		return idParticipante;
@@ -66,6 +69,14 @@ public class Participante {
 
 	public void setPuntosJornadaActual(Integer puntosJornadaActual) {
 		this.puntosJornadaActual = puntosJornadaActual;
+	}
+
+	public Integer getJugadoresJugados() {
+		return jugadoresJugados;
+	}
+
+	public void setJugadoresJugados(Integer jugadoresJugados) {
+		this.jugadoresJugados = jugadoresJugados;
 	}
 	
 }
