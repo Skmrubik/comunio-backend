@@ -15,6 +15,7 @@ import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 
 @RestController
 public class ParticipanteService {
+	
 	@Autowired
 	ParticipanteRepository participanteRepository;
 	

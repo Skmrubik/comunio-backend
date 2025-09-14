@@ -45,6 +45,11 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Inte
 	
 	@Modifying
     @Transactional
+    @Query(value="update participante set puntos_totales = 0", nativeQuery=true)
+    int reiniciarPuntosTotales();
+	
+	@Modifying
+    @Transactional
     @Query(value="update participante set jugadores_jugados = 0", nativeQuery=true)
     int reiniciarNumeroJugadores();
 }

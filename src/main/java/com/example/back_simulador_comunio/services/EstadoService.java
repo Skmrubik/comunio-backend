@@ -12,12 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.back_simulador_comunio.entities.Equipo;
 import com.example.back_simulador_comunio.entities.Estado;
 import com.example.back_simulador_comunio.repositories.EstadoRepository;
+import com.example.back_simulador_comunio.repositories.JugadorRepository;
+import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 
 @RestController
 public class EstadoService {
 	
 	@Autowired
 	EstadoRepository estadoRepository;
+	
+	@Autowired
+	JugadorRepository jugadorRepository;
+	
+	@Autowired
+	ParticipanteRepository participanteRepository;
 	
 	@GetMapping("/getEstado")
 	private ResponseEntity<Estado> listEstado(){
@@ -49,6 +57,26 @@ public class EstadoService {
 			int sig = estadoRepository.siguientePartido();
 			List<Estado> estado = estadoRepository.findAll();
 			return new ResponseEntity<>(estado.get(0), HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/reiniciarDatos")
+	private ResponseEntity<Integer> reiniciarDatos(){
+		try {
+			estadoRepository.reiniciarNumJornada();
+			estadoRepository.reiniciarPartidosJugados();
+			jugadorRepository.reiniciarGolesJornada();
+			jugadorRepository.reiniciarNumJornada();
+			jugadorRepository.reiniciarPuntosJornada();
+			jugadorRepository.reiniciarPuntosTotales();
+			jugadorRepository.reiniciarPuntosMedia();
+			participanteRepository.reiniciarNumeroJugadores();
+			participanteRepository.reiniciarPuntosJornada();
+			participanteRepository.reiniciarPuntosTotales();
+			return new ResponseEntity<>(1, HttpStatus.OK);
 		} catch (Exception e) {
 			System.out.println(e);
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

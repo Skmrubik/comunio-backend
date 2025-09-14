@@ -24,4 +24,9 @@ public interface EstadoRepository extends JpaRepository<Estado, Integer>{
     @Transactional
     @Query(value="update estado set partidos_jugados = 0", nativeQuery=true)
     int reiniciarPartidosJugados();
+	
+	@Modifying
+    @Transactional
+    @Query(value="update estado set num_jornada = 1", nativeQuery=true)
+    int reiniciarNumJornada();
 }

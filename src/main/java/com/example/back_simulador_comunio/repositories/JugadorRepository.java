@@ -49,6 +49,21 @@ public interface JugadorRepository extends JpaRepository<Jugador, Integer>{
 	
 	@Modifying
     @Transactional
+    @Query(value="update jugador set puntos_media = 0", nativeQuery=true)
+    int reiniciarPuntosMedia();
+	
+	@Modifying
+    @Transactional
+    @Query(value="update jugador set puntos_totales = 0", nativeQuery=true)
+    int reiniciarPuntosTotales();
+	
+	@Modifying
+    @Transactional
+    @Query(value="update jugador set num_jornada = 1", nativeQuery=true)
+    int reiniciarNumJornada();
+	
+	@Modifying
+    @Transactional
     @Query(value="update jugador set puntos_media = round(puntos_totales/num_jornada,1)", nativeQuery=true)
     int calcularMedia();
 	
