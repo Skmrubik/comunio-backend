@@ -23,21 +23,12 @@ public class KafkaConsumerService {
 	@Autowired
 	ParticipanteRepository participanteRepository;
 	
-	private final WebSocketHandler webSocketHandler;
-	
-	public KafkaConsumerService(WebSocketHandler webSocketHandler) {
-        this.webSocketHandler = webSocketHandler;
+	public KafkaConsumerService() {
     }
 	
-	static int contador = 0;
 	
     @KafkaListener(topics = "my_topic", groupId = "group_id")
     public void consume(MensajeJugadorDTO obj) {
-
-		System.out.println("IdJugador: " + obj.getIdJugador());
-	    System.out.println("Puntos: " + obj.getPuntosJornada());
-	    System.out.println("Goles: " + obj.getGoles());
-	    System.out.println("-------------------------");
         
         Jugador jugador = jugadorRepository.getJugadorById(obj.getIdJugador());
         jugador.setGoles(obj.getGoles());
@@ -49,19 +40,6 @@ public class KafkaConsumerService {
         		participanteRepository.aumentarJugadoresJugadosParticipante(jugador.getIdParticipante().getIdParticipante());
         	}
         }
-        contador++;
-        if (contador == 22) {
-        	try {
-        		Thread.sleep(2000);
-				webSocketHandler.sendMessage("UPDATE");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        	contador = 0;
-        }
+        
     }
 }
