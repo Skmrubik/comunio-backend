@@ -79,6 +79,35 @@ public class JugadorService {
 		}
 	}
 	
+	@GetMapping("/listJugadoresSuplentesPosicion")
+	private ResponseEntity<List<JugadorEquipoDTO>> listJugadoresSuplentesPosicion(@RequestParam String idParticipante,
+			@RequestParam String posicion){
+		try {
+			Integer id = Integer.parseInt(idParticipante);
+			Integer pos = Integer.parseInt(posicion);
+			List<JugadorEquipoDTO> jugador = jugadorRepository.listJugadoresSuplentesPosicion(id,pos);
+			return new ResponseEntity<>(jugador, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/cambioJugador")
+	private ResponseEntity<Integer> cambioJugador(@RequestParam String idTitular,
+			@RequestParam String idSuplente){
+		try {
+			Integer idTit = Integer.parseInt(idTitular);
+			Integer idSup = Integer.parseInt(idSuplente);
+			int a = jugadorRepository.updateJugadorATitular(idSup);
+			int b = jugadorRepository.updateJugadorASuplente(idTit);
+			return new ResponseEntity<>(1, HttpStatus.OK);
+		} catch (Exception e) {
+			System.out.println(e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@GetMapping("/actualizarJugadores")
 	private ResponseEntity<Integer> actualizarJugadores(){
 		try {
