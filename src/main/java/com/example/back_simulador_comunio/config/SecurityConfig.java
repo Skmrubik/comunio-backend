@@ -1,5 +1,6 @@
 package com.example.back_simulador_comunio.config;
 
+import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 import com.example.back_simulador_comunio.repositories.UserRepo;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     @Autowired
-    private UserRepo userRepo;
+    private ParticipanteRepository userRepo;
 
     @Autowired
     private JWTFilter filter;

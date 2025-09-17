@@ -1,6 +1,7 @@
 package com.example.back_simulador_comunio.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.back_simulador_comunio.entities.Participante;
+import com.example.back_simulador_comunio.entities.User;
 
 
 
@@ -19,7 +21,9 @@ public interface ParticipanteRepository extends JpaRepository<Participante, Inte
 	@Query(value="select * from participante order by puntos_totales desc", nativeQuery=true)
 	public List<Participante> getClasificacionTotal();
 	
-	public Participante findByNickname(String nickname);
+	//public Participante findByNickname(String nickname);
+	
+	Optional<Participante> findByNickname(String nickname);
 	
 	@Modifying
     @Transactional
