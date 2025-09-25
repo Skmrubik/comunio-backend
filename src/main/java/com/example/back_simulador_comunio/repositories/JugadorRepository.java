@@ -10,7 +10,9 @@ import com.example.back_simulador_comunio.entities.Jugador;
 import com.example.back_simulador_comunio.entities.JugadorEquipoDTO;
 
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface JugadorRepository extends JpaRepository<Jugador, Integer>{
 	
 	@Query(value="select * from jugador where id_participante = ?1 and titular = true order by posicion", nativeQuery=true)

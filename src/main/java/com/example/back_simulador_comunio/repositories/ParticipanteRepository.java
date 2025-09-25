@@ -6,13 +6,14 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.back_simulador_comunio.entities.Participante;
 import com.example.back_simulador_comunio.entities.User;
 
 
-
+@Repository
 public interface ParticipanteRepository extends JpaRepository<Participante, Integer>{
 
 	@Query(value="select * from participante order by puntos_jornada_actual desc", nativeQuery=true)

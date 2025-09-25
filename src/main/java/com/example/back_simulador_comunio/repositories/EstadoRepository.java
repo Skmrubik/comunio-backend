@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.back_simulador_comunio.entities.Estado;
 
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface EstadoRepository extends JpaRepository<Estado, Integer>{
 
 	@Modifying

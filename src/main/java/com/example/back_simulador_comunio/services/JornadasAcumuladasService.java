@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,22 +24,18 @@ import com.example.back_simulador_comunio.entities.Resultado;
 import com.example.back_simulador_comunio.repositories.JornadasAcumuladasRepository;
 import com.example.back_simulador_comunio.repositories.PuntosRepository;
 
-
-@Service
+@Component
 @RestController
 public class JornadasAcumuladasService {
 
-	@Autowired
-	JornadasAcumuladasRepository jornadasAcumuladasRepository;
+    @Autowired
+	public  JornadasAcumuladasRepository jornadasAcumuladasRepository;
 	
 	@Autowired
 	PuntosRepository puntosRepository;
-    
+
+    @Autowired
 	ControllerPartido controllerPartido;
-	
-	public JornadasAcumuladasService() {
-		this.controllerPartido = new ControllerPartido();
-	}
 	
 	@Transactional
 	@PostMapping("/insertPartido")

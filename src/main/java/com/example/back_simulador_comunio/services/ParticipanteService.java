@@ -1,22 +1,20 @@
 package com.example.back_simulador_comunio.services;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.back_simulador_comunio.config.JWTUtil;
@@ -26,6 +24,7 @@ import com.example.back_simulador_comunio.entities.ParticipanteRegistradoDTO;
 import com.example.back_simulador_comunio.entities.ParticipanteToken;
 import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 
+@Component
 @RestController
 public class ParticipanteService {
 	

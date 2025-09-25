@@ -1,5 +1,4 @@
 package com.example.back_simulador_comunio.entities;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

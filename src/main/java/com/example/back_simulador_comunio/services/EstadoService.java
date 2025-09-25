@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +17,7 @@ import com.example.back_simulador_comunio.repositories.EstadoRepository;
 import com.example.back_simulador_comunio.repositories.JugadorRepository;
 import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 
+@Component
 @RestController
 public class EstadoService {
 	

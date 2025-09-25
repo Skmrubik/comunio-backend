@@ -1,7 +1,5 @@
 package com.example.back_simulador_comunio.entities;
 
-
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -33,9 +31,6 @@ public class JornadasAcumuladas {
 	
 	@Column(name="goles_equipo2")
 	private Integer golesEquipo2;
-	
-	public JornadasAcumuladas() {
-	}
 	
 	public Integer getIdJornadaAcumulada() {
 		return idJornadaAcumulada;
