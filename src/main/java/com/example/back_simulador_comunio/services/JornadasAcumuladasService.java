@@ -74,7 +74,7 @@ public class JornadasAcumuladasService {
     @GetMapping("/borrarTodosDocumentosJornadas")
     private ResponseEntity<Integer> borrarTodosDocumentos(){
         try {
-            //jornadasAcumuladasRepository.deleteAll();
+            jornadasAcumuladasRepository.deleteAll();
             return new ResponseEntity<>(1, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e);

@@ -1,9 +1,12 @@
 package com.example.back_simulador_comunio.controller;
 
 import com.example.back_simulador_comunio.entities.*;
+import com.example.back_simulador_comunio.repositories.JugadorRepository;
+import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 import com.example.back_simulador_comunio.repositories.PuntosRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
@@ -13,6 +16,13 @@ import java.util.Random;
 
 @Controller
 public class ControllerPartido {
+
+    @Autowired
+    JugadorRepository jugadorRepository;
+
+    @Autowired
+    ParticipanteRepository participanteRepository;
+
     public ControllerPartido() {
     }
 
@@ -132,8 +142,16 @@ public class ControllerPartido {
             MensajeJugadorDTO json = new MensajeJugadorDTO(jugador.getIdJugador(),jugador.getPuntosJornada(), jugador.getGoles());
             ObjectMapper mapper = new ObjectMapper();
             String mensaje = mapper.writeValueAsString(json);
-            //kafkaProducerService.sendMessage(json);
+            Jugador jugadorBBDD = jugadorRepository.getJugadorById(jugador.getIdJugador());
+            jugadorBBDD.setGoles(jugador.getGoles());
+            jugadorBBDD.setPuntosJornada(jugador.getPuntosJornada());
+            jugadorRepository.save(jugadorBBDD);
             puntosRepository.save(puntos);
+            if(jugador.getTitular()){
+                Participante participante = jugador.getIdParticipante();
+                participante.setPuntosJornadaActual(participante.getPuntosJornadaActual()+jugador.getPuntosJornada());
+                participante.setJugadoresJugados(participante.getJugadoresJugados()+1);
+            }
         }
     }
 
