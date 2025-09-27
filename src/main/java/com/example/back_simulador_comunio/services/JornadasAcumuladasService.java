@@ -25,6 +25,9 @@ public class JornadasAcumuladasService {
     @Autowired
     ControllerPartidoService controllerPartidoService;
 
+    @Autowired
+    JornadasAcumuladasTransaccional jornadasAcumuladasTransaccional;
+
     @PostMapping("/insertPartido")
     public ResponseEntity<Resultado> insertPartido(@RequestBody Partido partido) {
         try {
@@ -74,7 +77,7 @@ public class JornadasAcumuladasService {
     @GetMapping("/borrarTodosDocumentosJornadas")
     private ResponseEntity<Integer> borrarTodosDocumentos(){
         try {
-            jornadasAcumuladasRepository.deleteAll();
+            jornadasAcumuladasTransaccional.borrarTodasJornadas();
             return new ResponseEntity<>(1, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e);

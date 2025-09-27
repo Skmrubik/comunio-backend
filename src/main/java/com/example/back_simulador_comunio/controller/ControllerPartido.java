@@ -6,6 +6,7 @@ import com.example.back_simulador_comunio.repositories.ParticipanteRepository;
 import com.example.back_simulador_comunio.repositories.PuntosRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -147,12 +148,17 @@ public class ControllerPartido {
             jugadorBBDD.setPuntosJornada(jugador.getPuntosJornada());
             jugadorRepository.save(jugadorBBDD);
             puntosRepository.save(puntos);
-            if(jugador.getTitular()){
-                Participante participante = jugador.getIdParticipante();
-                participante.setPuntosJornadaActual(participante.getPuntosJornadaActual()+jugador.getPuntosJornada());
-                participante.setJugadoresJugados(participante.getJugadoresJugados()+1);
+            if(jugador.getTitular().booleanValue()){
+                actualizarParticipante(jugador);
             }
         }
+    }
+
+    @Transactional
+    public void actualizarParticipante(Jugador jugador) {
+        Participante participante = jugador.getIdParticipante();
+        participanteRepository.aumentarJugadoresJugadosParticipante(participante.getIdParticipante());
+        participanteRepository.aumentarPuntosJornadaParticipante(jugador.getPuntosJornada(), participante.getIdParticipante());
     }
 
     public JornadasAcumuladas generarJornada(Partido partido, Resultado result) {

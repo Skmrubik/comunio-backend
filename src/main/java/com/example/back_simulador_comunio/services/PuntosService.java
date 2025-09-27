@@ -18,6 +18,9 @@ public class PuntosService {
     @Autowired
     PuntosRepository puntosRepository;
 
+    @Autowired
+    PuntosTransaccional puntosTransaccional;
+
     @GetMapping("/getJugadoresPartidoJornada")
     private ResponseEntity<List<Puntos>> getJugadoresPartidoJornada(@RequestParam String numJornada, @RequestParam String equipo) {
         try {
@@ -46,7 +49,7 @@ public class PuntosService {
     @GetMapping("/borrarTodosDocumentosPuntos")
     private ResponseEntity<Integer> borrarTodosDocumentos() {
         try {
-            puntosRepository.deleteAll();
+            puntosTransaccional.borrarPuntos();
             return new ResponseEntity<>(1, HttpStatus.OK);
         } catch (Exception e) {
             System.out.println(e);
