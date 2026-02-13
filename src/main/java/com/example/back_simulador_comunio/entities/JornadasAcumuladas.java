@@ -1,79 +1,77 @@
 package com.example.back_simulador_comunio.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="jornadas_acumuladas")
 public class JornadasAcumuladas {
-	
-	@Id
-	@Column(name="id_jornada_acumulada")
-	private Integer idJornadaAcumulada;
-	
-	@Column(name="numero_jornada")
-	private Integer numeroJornada;
-	
-	@ManyToOne
-	@JoinColumn(name="id_equipo1")
-	private Equipo idEquipo1;
-	
-	@ManyToOne
-	@JoinColumn(name="id_equipo2")
-	private Equipo idEquipo2;
-	
-	@Column(name="goles_equipo1")
-	private Integer golesEquipo1;
-	
-	@Column(name="goles_equipo2")
-	private Integer golesEquipo2;
-	
-	public Integer getIdJornadaAcumulada() {
-		return idJornadaAcumulada;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_jornadas_acumuladas")
+    private Integer idJornadasAcumuladas;
 
-	public void setIdJornadaAcumulada(Integer idJornadaAcumulada) {
-		this.idJornadaAcumulada = idJornadaAcumulada;
-	}
+    @Column(name="numero_jornada")
+    private Integer numeroJornada;
 
-	public Equipo getIdEquipo1() {
-		return idEquipo1;
-	}
+    @ManyToOne
+    @JoinColumn(name="id_equipo_uno")
+    private Equipo idEquipoUno;
 
-	public void setIdEquipo1(Equipo idEquipo1) {
-		this.idEquipo1 = idEquipo1;
-	}
+    @ManyToOne
+    @JoinColumn(name="id_equipo_dos")
+    private Equipo idEquipoDos;
 
-	public Equipo getIdEquipo2() {
-		return idEquipo2;
-	}
+    @Column(name="goles_equipo_uno")
+    private Integer golesEquipoUno;
 
-	public void setIdEquipo2(Equipo idEquipo2) {
-		this.idEquipo2 = idEquipo2;
-	}
+    @Column(name="goles_equipo_dos")
+    private Integer golesEquipoDos;
 
-	public Integer getNumeroJornada() {
-		return numeroJornada;
-	}
-	public void setNumeroJornada(Integer numeroJornada) {
-		this.numeroJornada = numeroJornada;
-	}
-	
-	public Integer getGolesEquipo1() {
-		return golesEquipo1;
-	}
-	public void setGolesEquipo1(Integer golesEquipo1) {
-		this.golesEquipo1 = golesEquipo1;
-	}
-	public Integer getGolesEquipo2() {
-		return golesEquipo2;
-	}
-	public void setGolesEquipo2(Integer golesEquipo2) {
-		this.golesEquipo2 = golesEquipo2;
-	}
+    public Integer getIdJornadaAcumulada() {
+        return idJornadasAcumuladas;
+    }
 
+    public void setIdJornadaAcumulada(Integer idJornadaAcumulada) {
+        this.idJornadasAcumuladas = idJornadaAcumulada;
+    }
+
+    public Integer getNumeroJornada() {
+        return numeroJornada;
+    }
+
+    public void setNumeroJornada(Integer numeroJornada) {
+        this.numeroJornada = numeroJornada;
+    }
+
+    public Equipo getIdEquipoUno() {
+        return idEquipoUno;
+    }
+
+    public void setIdEquipoUno(Equipo idEquipoUno) {
+        this.idEquipoUno = idEquipoUno;
+    }
+
+    public Equipo getIdEquipoDos() {
+        return idEquipoDos;
+    }
+
+    public void setIdEquipoDos(Equipo idEquipoDos) {
+        this.idEquipoDos = idEquipoDos;
+    }
+
+    public Integer getGolesEquipoUno() {
+        return golesEquipoUno;
+    }
+
+    public void setGolesEquipoUno(Integer golesEquipoUno) {
+        this.golesEquipoUno = golesEquipoUno;
+    }
+
+    public Integer getGolesEquipoDos() {
+        return golesEquipoDos;
+    }
+
+    public void setGolesEquipoDos(Integer golesEquipoDos) {
+        this.golesEquipoDos = golesEquipoDos;
+    }
 }

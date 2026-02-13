@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.example.back_simulador_comunio"})
 public class BackSimuladorComunioApplication {
 
 	public static void main(String[] args) {

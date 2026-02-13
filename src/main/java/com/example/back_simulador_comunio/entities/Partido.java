@@ -3,60 +3,58 @@ package com.example.back_simulador_comunio.entities;
 import java.util.List;
 
 public class Partido {
-	
-	Equipo equipoLocal;
-	Equipo equipoVisitante;
-	List<Jugador> jugadoresLocales;
-	List<Jugador> jugadoresVisitantes;
-	Integer numJornada;
-	
-	public Partido() {
-	}
-	
-	public Partido(Equipo equipoLocal, Equipo equipoVisitante, List<Jugador> jugadoresLocales,
-			List<Jugador> jugadoresVisitantes, Integer numJornada) {
-		this.equipoLocal = equipoLocal;
-		this.equipoVisitante = equipoVisitante;
-		this.jugadoresLocales = jugadoresLocales;
-		this.jugadoresVisitantes = jugadoresVisitantes;
-		this.numJornada = numJornada;
-	}
+    Equipo equipoLocal;
+    Equipo equipoVisitante;
+    List<Jugador> jugadoresLocales;
+    List<Jugador> jugadoresVisitantes;
+    Integer numJornada;
 
-	public Equipo getEquipoLocal() {
-		return equipoLocal;
-	}
-	public void setEquipoLocal(Equipo equipoLocal) {
-		this.equipoLocal = equipoLocal;
-	}
-	public Equipo getEquipoVisitante() {
-		return equipoVisitante;
-	}
-	public void setEquipoVisitante(Equipo equipoVisitante) {
-		this.equipoVisitante = equipoVisitante;
-	}
-	
-	public List<Jugador> getJugadoresLocales() {
-		return jugadoresLocales;
-	}
+    public Partido() {
+    }
 
-	public void setJugadoresLocales(List<Jugador> jugadoresLocales) {
-		this.jugadoresLocales = jugadoresLocales;
-	}
+    public Partido(Equipo equipoLocal, Equipo equipoVisitante, List<Jugador> jugadoresLocales,
+                   List<Jugador> jugadoresVisitantes, Integer numJornada) {
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.jugadoresLocales = jugadoresLocales;
+        this.jugadoresVisitantes = jugadoresVisitantes;
+        this.numJornada = numJornada;
+    }
 
-	public List<Jugador> getJugadoresVisitantes() {
-		return jugadoresVisitantes;
-	}
+    public Equipo getEquipoLocal() {
+        return equipoLocal;
+    }
+    public void setEquipoLocal(Equipo equipoLocal) {
+        this.equipoLocal = equipoLocal;
+    }
+    public Equipo getEquipoVisitante() {
+        return equipoVisitante;
+    }
+    public void setEquipoVisitante(Equipo equipoVisitante) {
+        this.equipoVisitante = equipoVisitante;
+    }
 
-	public void setJugadoresVisitantes(List<Jugador> jugadoresVisitantes) {
-		this.jugadoresVisitantes = jugadoresVisitantes;
-	}
+    public List<Jugador> getJugadoresLocales() {
+        return jugadoresLocales;
+    }
 
-	public Integer getNumJornada() {
-		return numJornada;
-	}
+    public void setJugadoresLocales(List<Jugador> jugadoresLocales) {
+        this.jugadoresLocales = jugadoresLocales;
+    }
 
-	public void setNumJornada(Integer numJornada) {
-		this.numJornada = numJornada;
-	}
-	
+    public List<Jugador> getJugadoresVisitantes() {
+        return jugadoresVisitantes;
+    }
+
+    public void setJugadoresVisitantes(List<Jugador> jugadoresVisitantes) {
+        this.jugadoresVisitantes = jugadoresVisitantes;
+    }
+
+    public Integer getNumJornada() {
+        return numJornada;
+    }
+
+    public void setNumJornada(Integer numJornada) {
+        this.numJornada = numJornada;
+    }
 }
