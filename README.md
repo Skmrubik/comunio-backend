@@ -5,3 +5,7 @@ de la temporada (Jugadores, Equipos, Participantes,...).
 
 Posteriormente, al comprobar que con microservicios funciona bien, se pasa toda la funcionalidad al microservicio que usa Postgres. Esto se hace puesto que en la mensajería con Kafka se pierde cierto
 tiempo y solo quería usar microservicios para ver como funcionaban en una aplicación real. 
+
+![Captura del proyecto](./assets/Captura1.png)
+
+![Captura del proyecto](./assets/Captura2.png)
